@@ -1,13 +1,7 @@
 import '@mantine/core/styles.css';
-import {
-	AppShell,
-	Burger,
-	Group,
-	MantineProvider,
-	Skeleton,
-	Text,
-} from '@mantine/core';
+import { AppShell, Burger, Group, MantineProvider } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { NavBar } from './components/NavBar';
 
 function App() {
 	const [opened, { toggle }] = useDisclosure();
@@ -41,25 +35,13 @@ function App() {
 					</Group>
 				</AppShell.Header>
 				<AppShell.Navbar p='md'>
-					<Group>
-						<Burger
-							opened={opened}
-							onClick={toggle}
-							hiddenFrom='sm'
-							size='sm'
-						/>
-						<Text>Navbar</Text>
-					</Group>
-					{Array(15)
-						.fill(0)
-						.map((_, index) => (
-							<Skeleton key={index} h={28} mt='sm' animate={false} />
-						))}
+					<Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='sm' />
+					<NavBar />
 				</AppShell.Navbar>
 				<AppShell.Main>
 					Alt layout – Navbar and Aside are rendered on top on Header and Footer
 				</AppShell.Main>
-				<AppShell.Aside p='md'>Aside</AppShell.Aside>
+				{/* <AppShell.Aside p='md'>Aside</AppShell.Aside> */}
 				<AppShell.Footer p='md'>Footer</AppShell.Footer>
 			</AppShell>
 		</MantineProvider>
